@@ -1,0 +1,9 @@
+---
+vcenter_hostname: "vcenter.cns.cit.insea.io"
+vcenter_datacenter: "CHNDSI"
+vcenter_validate_certs: false
+vcenter_username: "nicole.adm@cn.corp.seagroup.com"
+vcenter_password: "Human245601,"
+vm_name: "CHNDSI-VS-IT-23.137"
+#vm_template: "mytemplate"
+vm_folder: "/"

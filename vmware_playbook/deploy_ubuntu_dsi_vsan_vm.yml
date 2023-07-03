@@ -1,0 +1,25 @@
+---
+- name: Deploy Virtual Machine from template in content library
+  hosts: localhost
+  become: false
+  gather_facts: false
+  collections:
+    - community.vmware
+  pre_tasks: 
+    - include_vars:  deploy_ubuntu_dsi_vsan_vars.yml
+  tasks: 
+    - name: deploy a new ubuntu using content library template
+      vmware_content_deploy_template: 
+        hostname: '{{ vcenter_hostname }}'
+        username: '{{ vcenter_username }}'
+        password: '{{ vcenter_password }}'
+        validate_certs: no
+        template: '{{vm_ubuntu_template}}' 
+        datastore: '{{vcenter_datastore_vsan}}'
+        folder: '{{vm_folder}}'
+        datacenter: '{{vcenter_datacenter}}'
+        name: '{{new_vm_hostname}}'
+        cluster: '{{vcenter_cluster}}'
+        host: 10.12.3.235 
+        state: present
+      delegate_to: localhost

@@ -1,0 +1,19 @@
+---
+- name: Find folder path of an existing virtual machine
+  hosts: localhost
+  gather_facts: False
+  vars_files:
+    - vmware_vars.yml
+  tasks:
+    - set_fact:
+        find_vm_name: "CHNDSI-VS-IT-23.137"
+
+    - name: "Find folder for VM - {{ find_vm_name }}"
+      vmware_guest_find:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        validate_certs: "{{vcenter_validate_certs}}"
+        name: "{{ find_vm_name }}"
+      delegate_to: localhost
+      register: vm_facts
