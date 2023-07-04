@@ -1,6 +1,6 @@
 ---
 - name: Find folder path of an existing virtual machine
-  hosts: localhost
+  hosts: 10.12.23.137
   gather_facts: False
   vars_files:
     - vmware_vars.yml
